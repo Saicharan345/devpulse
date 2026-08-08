@@ -3,13 +3,19 @@ zerops:
 
     build:
       base: python@3.12
-      buildCommands:
-        - pip install -r backend/requirements.txt
+
+      addToRunPrepare:
+        - backend/requirements.txt
+
       deployFiles:
         - backend/~
 
     run:
       base: python@3.12
+
+      prepareCommands:
+        - python3 -m pip install --ignore-installed -r requirements.txt
+
       ports:
         - port: 8000
           httpSupport: true
