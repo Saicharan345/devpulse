@@ -5,7 +5,12 @@ from app.database import Base, engine
 from app import models
 from app.routes.monitors import router as monitor_router
 from app.routes.incidents import router as incident_router
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 Base.metadata.create_all(bind=engine)
 
