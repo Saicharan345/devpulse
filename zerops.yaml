@@ -5,7 +5,7 @@ zerops:
       base: python@3.12
 
       buildCommands:
-        - python -m pip install -r backend/requirements.txt
+        - python3 -m pip install -r backend/requirements.txt
 
       addToRunPrepare:
         - backend/requirements.txt
@@ -17,7 +17,7 @@ zerops:
       base: python@3.12
 
       prepareCommands:
-        - python -m pip install -r requirements.txt
+        - python3 -m pip install --ignore-installed -r requirements.txt
 
       ports:
         - port: 8000
@@ -26,7 +26,7 @@ zerops:
       envVariables:
         DATABASE_URL: ${db_connectionString}
 
-      start: uvicorn main:app --host 0.0.0.0 --port 8000
+      start: python3 -m uvicorn main:app --host 0.0.0.0 --port 8000
 
       healthCheck:
         httpGet:
