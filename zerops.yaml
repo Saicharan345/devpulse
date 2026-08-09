@@ -31,3 +31,16 @@ zerops:
         httpGet:
           port: 8000
           path: /health
+
+  - setup: gui
+    build:
+      base: nodejs@20
+      buildCommands:
+        - cd frontend && npm ci
+        - cd frontend && npm run build
+      deployFiles:
+        - frontend/dist/~
+      cache: frontend/node_modules
+    run:
+      os: alpine
+      base: static
