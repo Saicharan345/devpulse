@@ -20,7 +20,10 @@ app = FastAPI(title="DevPulse API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=[
+    "http://localhost:5173",
+    "https://gui-2c0c.prg1.zerops.app",
+],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
